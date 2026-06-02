@@ -891,13 +891,22 @@ body.intro-active #cur, body.intro-active #cur2, body.intro-active #cur3 { displ
   animation: typew .9s steps(30) .25s backwards;
 }
 .doss-title .acc { color: #00BFFF; }
-.doss-grid {
+/*.doss-grid {
   display: grid; grid-template-columns: 320px 1fr;
   gap: 2.2rem; width: 100%; max-width: 920px;
   background: rgba(0,191,255,.025);
   border: 1px solid rgba(0,191,255,.4);
   padding: 2rem; position: relative;
   animation: rise .8s ease .5s backwards;
+}*/
+.doss-grid {
+  display: grid; grid-template-columns: 280px 1fr;
+  gap: 1.8rem; width: 100%; max-width: 920px;
+  background: rgba(0,191,255,.025);
+  border: 1px solid rgba(0,191,255,.4);
+  padding: 1.8rem; position: relative;
+  animation: rise .8s ease .5s backwards;
+  align-items: start;
 }
 .doss-grid::before, .doss-grid::after {
   content:''; position: absolute; width: 26px; height: 26px;
@@ -907,8 +916,14 @@ body.intro-active #cur, body.intro-active #cur2, body.intro-active #cur3 { displ
 .doss-grid::after { bottom: -1px; right: -1px; border-left: none; border-top: none; }
 @keyframes rise { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
 .doss-photo-wrap { position: relative; }
-.doss-photo {
+/*.doss-photo {
   width: 100%; aspect-ratio: 1;
+  object-fit: cover; border: 2px solid #00BFFF;
+  filter: contrast(1.1);
+  box-shadow: 0 0 30px rgba(0,191,255,.3);
+}*/
+.doss-photo {
+  width: 100%; max-width: 280px; aspect-ratio: 1;
   object-fit: cover; border: 2px solid #00BFFF;
   filter: contrast(1.1);
   box-shadow: 0 0 30px rgba(0,191,255,.3);
@@ -1034,11 +1049,24 @@ body.intro-active #cur, body.intro-active #cur2, body.intro-active #cur3 { displ
   100% { top: 100%; }
 }
 
-
-
+/* ───── RESPONSIVE ADJUSTMENTS ───── */
 @media(max-width: 750px) {
-  .doss-grid { grid-template-columns: 1fr; padding: 1.4rem; gap: 1.4rem; }
-  .doss-photo { max-width: 240px; margin: 0 auto; display: block; }
+  .doss-grid { 
+  grid-template-columns: 1fr; 
+  padding: 1.2rem; 
+  gap: 1.2rem; 
+  max-height: 75vh;
+  overflow-y: auto;
+  }
+  .doss-photo-wrap { 
+    max-width: 180px; 
+    margin: 0 auto; 
+  }
+  .doss-photo { max-width: 180px; }
+  .doss-photo-wrap .small-data { text-align: center; }
+  .doss-row { grid-template-columns: 95px 1fr; gap: .6rem; margin-bottom: .55rem; }
+  .doss-row .k { font-size: .58rem; }
+  .doss-row .v { font-size: .72rem; }
   .gate-meta, .gate-meta-r { bottom: 1.5rem; line-height: 1.8; }
   .gate-meta { left: 1.2rem; }
   .gate-meta-r { right: 1.2rem; }
@@ -1053,6 +1081,17 @@ body.intro-active #cur, body.intro-active #cur2, body.intro-active #cur3 { displ
   .cpanel .row { grid-template-columns: 70px 1fr; gap: .35rem; }
   .code-panel { padding: .8rem .9rem; }
   .doss-row { grid-template-columns: 100px 1fr; gap: .6rem; }
+}
+
+/* Tablet adjustments */
+@media (min-width: 751px) and (max-width: 1024px) {
+  .doss-grid { 
+    grid-template-columns: 240px 1fr; 
+    padding: 1.4rem; 
+    gap: 1.4rem; 
+  }
+  .doss-photo { max-width: 240px; }
+  .doss-row { grid-template-columns: 120px 1fr; }
 }
 
 /* ── PROJECT CARD CAROUSEL ── */
